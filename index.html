@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-family: "Poppins", sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: rgb(44, 44, 44);
+        }
+
+        header {
+            text-align: center;
+            background-color: rgb(41, 41, 41);
+            border-bottom: 2px solid rgb(38, 38, 38);
+            position: absolute;
+            width: 100vw;
+            height: fit-content;
+            padding: 5vmin 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+        }
+
+        header > a {
+            text-decoration: none;
+            color: inherit;
+            font-size: 1rem;
+            cursor: default;
+        }
+
+        hr {
+            width: 10%;
+            margin: .25rem 0;
+            height: 4px;
+            background-color: white;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+
+        .input, .btn {
+            margin: 10px;
+            background-color: rgb(55, 55, 55);
+            border: 0px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            width: 80vmin;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .stuff-cont {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .gitLink {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: inherit;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .btn {
+            background-color: rgb(70, 70, 70);
+            width: fit-content;
+            cursor: pointer;
+        }
+    </style>
+    <title>Is it a Palindrome?</title>
+</head>
+<body>
+    <header>
+        <a class="gitLink" target="_blank" href="https://github.com/iHas3Arms?tab=repositories"></a>
+        <h1>Is it a palindrome?</h1>
+        <hr>
+        <a target="_blank" href="https://github.com/iHas3Arms?tab=repositories">A palindrome is a word or number that is spelt the same forwards as it is backwards</a>
+    </header>
+    <div class="stuff-cont">
+        <input type="text" id="input" class="input" placeholder="Check if a number or text is a palindrome">
+        <button class="btn" onclick="submit()">Check</button>
+    </div>
+    <p class="out">?</p>
+</body>
+<script>
+    // Note: this method uses a for loop. To see the same project using 
+    // recursion, please check my other projects
+
+    let text = document.getElementById("input");
+    let out = document.querySelector("out");
+
+    if (window.innerWidth <= 560) {
+        text.placeholder = "Start Checking!";
+    }
+
+    text.addEventListener("keydown", e => {
+        if (e.key == "Enter") submit();
+    });
+
+    function submit() {
+        checkPalindrome(text);
+        text.value = "";
+    }
+
+    function checkPalindrome(n) {
+        console.log(n.value);
+        let arrLength = n.value.length;
+        let cont = true;
+
+        for (i=0; i<=arrLength; i++) {
+            if (n.value[i] == n.value[arrLength - 1 - i]) {
+                cont = true;
+            } else {
+                cont = false;
+                break;
+            }
+        }
+
+        if (cont) {
+            out.innerText = `That is a palindrome!`;
+        } else {
+            out.innerText = "That is not a palindrome.";
+        }
+    }
+</script>
+</html>
