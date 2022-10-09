@@ -70,6 +70,7 @@
         }
 
         .stuff-cont {
+            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -86,6 +87,14 @@
             width: 30px;
             height: 30px;
             cursor: pointer;
+        }
+
+        .out {
+            position: relative;
+            z-index: 1000000;
+            color: white;
+            font-size: 3rem;
+            top: 15%;
         }
 
         .btn {
@@ -106,15 +115,15 @@
     <div class="stuff-cont">
         <input type="text" id="input" class="input" placeholder="Check if a number or text is a palindrome">
         <button class="btn" onclick="submit()">Check</button>
+        <p class="out">?</p>
     </div>
-    <p class="out">?</p>
 </body>
 <script>
     // Note: this method uses a for loop. To see the same project using 
     // recursion, please check my other projects
 
     let text = document.getElementById("input");
-    let out = document.querySelector("out");
+    let out = document.querySelector(".out");
 
     if (window.innerWidth <= 560) {
         text.placeholder = "Start Checking!";
@@ -125,11 +134,11 @@
     });
 
     function submit() {
-        checkPalindrome(text);
+        checkPalindrome(text, out);
         text.value = "";
     }
 
-    function checkPalindrome(n) {
+    function checkPalindrome(n, out) {
         console.log(n.value);
         let arrLength = n.value.length;
         let cont = true;
@@ -144,9 +153,9 @@
         }
 
         if (cont) {
-            out.innerText = `That is a palindrome!`;
+            out.innerHTML = `That is a palindrome!`;
         } else {
-            out.innerText = "That is not a palindrome.";
+            out.innerHTML = "That is not a palindrome.";
         }
     }
 </script>
