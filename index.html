@@ -35,13 +35,13 @@
         }
 
         h1 {
-            font-size: 1.75rem;
+            font-size: 2rem;
         }
 
         header > a {
             text-decoration: none;
             color: inherit;
-            font-size: 1rem;
+            font-size: 1.25rem;
             cursor: default;
         }
 
@@ -57,16 +57,26 @@
         }
 
         .input, .btn {
+            position: relative;
             margin: 10px;
             background-color: rgb(55, 55, 55);
             border: 0px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            font-size: .95rem;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
             width: 80vmin;
-            padding: 0 1rem;
+            padding: .2rem 1rem;
             text-align: center;
+        }
+
+        .input {
+            top: 30px;
+        }
+
+        .btn {
+            top: 30px;
         }
 
         .stuff-cont {
@@ -144,7 +154,7 @@
         let cont = true;
 
         for (i=0; i<=arrLength; i++) {
-            if (n.value[i] == n.value[arrLength - 1 - i]) {
+            if (n.value.toLowerCase()[i] == n.value.toLowerCase()[arrLength - 1 - i]) {
                 cont = true;
             } else {
                 cont = false;
